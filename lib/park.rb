@@ -25,4 +25,15 @@ class Park
         all_passengers.flatten
     end
 
+    def revenue
+        revenue = 0
+        @vehicles.each do |vehicle|
+            vehicle.passengers.each do |passenger|
+                if passenger.age >= 18
+                    revenue += @addmission_price
+                end
+            end
+        end
+        revenue
+    end
 end

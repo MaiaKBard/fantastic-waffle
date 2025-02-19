@@ -68,4 +68,22 @@ RSpec.describe Park do
             expect(@park.all_passengers).to eq([@charlie, @taylor, @chris, @jude])        
         end
     end
+
+    describe '#revenue' do
+        it 'can add addmission prices from adults to equal the revenue' do
+            @park.add_vehicle(@vehicle1)
+            @park.add_vehicle(@vehicle2)
+            @park.add_vehicle(@vehicle3)
+
+            expect(@park.list_vehicles).to eq([@vehicle1, @vehicle2, @vehicle3])
+
+            @vehicle1.add_passenger(@charlie)
+            @vehicle1.add_passenger(@taylor)
+            @vehicle3.add_passenger(@jude)
+            @vehicle2.add_passenger(@chris)
+
+            expect(@park.all_passengers).to eq([@charlie, @taylor, @chris, @jude]) 
+            expect(@park.revenue).to eq(90)     
+        end
+    end
 end
